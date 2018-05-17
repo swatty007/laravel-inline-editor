@@ -1,5 +1,10 @@
 Inline Editor for Laravel based projects
 ================
+[![Latest Stable Version](https://poser.pugx.org/swatty007/laravel-inline-editor/v/stable)](https://packagist.org/packages/swatty007/laravel-inline-editor)
+[![Latest Unstable Version](https://poser.pugx.org/swatty007/laravel-inline-editor/v/unstable)](https://packagist.org/packages/swatty007/laravel-inline-editor)
+[![Total Downloads](https://poser.pugx.org/swatty007/laravel-inline-editor/downloads)](https://packagist.org/packages/swatty007/laravel-inline-editor)
+[![License](https://poser.pugx.org/swatty007/laravel-inline-editor/license)](https://packagist.org/packages/swatty007/laravel-inline-editor)
+
 Simple inline editor toolbar, to update the content of any HTML block, 
 or specific DB table.
 
