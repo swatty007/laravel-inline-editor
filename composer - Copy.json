@@ -1,0 +1,46 @@
+{
+    "name": "swatty007/laravel-inline-editor",
+    "description": "Laravel package, which allows inline editing of model specific content blocks.",
+    "keywords": ["laravel", "html", "content management", "vue", "inline"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "swatty007",
+            "email": "info@martin-niehoff.de"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "illuminate/support": "^5.2",
+        "illuminate/database": "^5.2"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "swatty007\\LaravelInlineEditor\\InlineEditorServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "swatty007\\LaravelInlineEditor\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "swatty007\\LaravelInlineEditor\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    },
+    "repositories": {
+        "local": {
+            "type": "path",
+            "url": "../example-pkg"
+        }
+    }
+}
