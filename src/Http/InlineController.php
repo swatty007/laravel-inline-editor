@@ -11,15 +11,21 @@ class InlineController extends BaseController
 {
     public function index(Request $request)
     {
-        $blocks = $request->blocks;
+        $blocks     = $request->blocks;
 
         foreach ($blocks as $block)
         {
-            Validator::make($block, config('laravel-inline-editor.rules') )->validate();
+            $rules = 'laravel-inline-editor.rules.' . $block['validationRules'];
+            Validator::make($block, config($rules) )->validate();
+
+            if($block['rawText'] == 'true')
+                $content = trim(strip_tags($block['target_value']));
+            else
+                $content = trim( $block['target_value'] );
 
             DB::table($block['table'])
                 ->where($block['source_key'], $block['source_value'])
-                ->update([ $block['target_key'] => $block['target_value']]);
+                ->update([ $block['target_key'] => $content]);
         }
 
         return 'ok';

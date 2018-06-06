@@ -8,11 +8,13 @@ return [
 
     // Default Validation rules
     'rules' => [
-        'table'         => 'required',
-        'source_key'    => 'required',
-        'source_value'  => 'required',
-        'target_key'    => 'required',
-        'target_value'  => 'required',
+        'default' => [
+            'table'         => 'required',
+            'source_key'    => 'required',
+            'source_value'  => 'required',
+            'target_key'    => 'required',
+            'target_value'  => 'required',
+        ]
     ],
 
     'paths' => [

@@ -24,6 +24,8 @@
           block.syncContent();
 
           changed.push({
+            rawText         : block.rawText,
+            validationRules : block.validationRules,
             table           : block.table,
             source_key      : block.source_key,
             source_value    : block.source_value,
@@ -58,11 +60,21 @@
                     }
                   }, response => {
                     // error callback
-                    this.$swal({
-                      type: 'error',
-                      title: 'Oops...',
-                      text: 'Something went wrong!'
-                    });
+
+                    if( response.body.message === 'The given data was invalid.') {
+                      this.$swal({
+                        type: 'error',
+                        title: 'The given data was invalid',
+                        text: response.body.errors.target_value
+                      });
+                    }
+                    else {
+                      this.$swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!'
+                      });
+                    }
                   });
               }
             })

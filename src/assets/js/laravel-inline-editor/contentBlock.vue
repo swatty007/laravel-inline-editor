@@ -10,6 +10,8 @@
     data: function () {
       return {
         medium          : null,
+        rawText         : null,
+        validationRules : null,
         table           : null,
         options         : null,
         source_key      : null,
@@ -20,7 +22,10 @@
     },
 
     mounted: function() {
-      this.table      = this.$el.attributes.table.nodeValue;
+      this.table            = this.$el.attributes.table.nodeValue;
+
+      this.rawText          = this.$el.attributes.rawText.nodeValue;
+      this.validationRules  = this.$el.attributes.validationRules.nodeValue;
 
       var optionsString = this.$el.attributes.options.nodeValue;
       this.options = JSON.parse( optionsString.replace(/'/g, '"') );

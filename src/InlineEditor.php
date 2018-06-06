@@ -20,19 +20,25 @@ class InlineEditor
      * @param string $source_key The key value of the database, for which we are looking.
      * @param string $target_key The key of the database, which should be updated.
      * @param string $options Display options for the vue editor.
+     * @param string $validationRules Name of the Configuration Object for some Custom Validation Rules.
+     * @param boolean $rawText Enables stripping of all HMTL Elements, from the input content.
      * @return boolean
      */
-    public static function setUp( $source_value, $table = null, $source_key = null, $target_key = null, $options = null)
+    public static function setUp( $source_value, $table = null, $source_key = null, $target_key = null, $options = null, $validationRules = null, $rawText = null)
     {
         // Set default values for out items, if they are not defined
-        if( !isset($source_value) ) $source_value = 'key';
+        if( !isset($source_value) )     $source_value       = 'key';
 
-        if( !isset($table) )        $table        = 'laravel_inline_editor';
-        if( !isset($source_key) )   $source_key   = 'key';
-        if( !isset($target_key) )   $target_key   = 'content';
-        if( !isset($options) )      $options      = config('laravel-inline-editor.options');
+        if( !isset($table) )            $table              = 'laravel_inline_editor';
+        if( !isset($source_key) )       $source_key         = 'key';
+        if( !isset($target_key) )       $target_key         = 'content';
+        if( !isset($options) )          $options            = config('laravel-inline-editor.options');
+        if( !isset($validationRules) )  $validationRules    = 'default';
+        if( !isset($rawText) )          $rawText            = false;
 
-    	self::$models[$source_value] = [$table, $source_key, $target_key , $options];
+        $rawText = $rawText ? 'true':'false';
+
+    	self::$models[$source_value] = [$table, $source_key, $target_key , $options, $validationRules, $rawText];
 
         ob_start();
 
@@ -71,9 +77,11 @@ class InlineEditor
                 source_key="'.$objectData[1].'" 
                 source_value="'.$key.'"
                 target_key="'.$objectData[2].'" 
+                validationRules="'.$objectData[4] .'"
+                rawText="'.$objectData[5] .'"
                 table="'.$objectData[0].'" 
                 options="'. $objectData[3].'"
-                content="'. $contentBlock->{$objectData[2]}.'"
+                content="'. str_replace('"',"'",$contentBlock->{$objectData[2]}).'"
                 >%s</inline-content-block>', $key, trim($contentBlock->{$objectData[2]}));
         }
 
