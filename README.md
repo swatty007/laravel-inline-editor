@@ -150,7 +150,9 @@ For details check the medium js documentation: https://github.com/yabwe/medium-e
 2. **Table** - will override at which table we are looking for the above defined value.
 3. **Source Key** - allow overwriting the DB row at which we are looking for our source value.
 4. **Target Key** - allow overwriting the DB row at which will be updated.
-5. **Options** - allows you to specify additional options for the medium editor.
+5. **Editor Options** - allows you to specify additional options for the medium editor.
+6. **Validation Rules** - Allows you to define a set of custom validation rules.
+7. **Strip HTML** - Strips all HTML elements from the given input string, before saving it into the DB.
 
 The first time it's being rendered directive will try to find the content of your element 
 by its defined key in the default database, if not specified otherwise.
