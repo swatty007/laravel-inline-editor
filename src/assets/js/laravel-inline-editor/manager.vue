@@ -26,6 +26,7 @@
           changed.push({
             rawText         : block.rawText,
             validationRules : block.validationRules,
+            lang            : block.lang,
             table           : block.table,
             source_key      : block.source_key,
             source_value    : block.source_value,

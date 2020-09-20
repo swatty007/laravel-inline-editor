@@ -14,6 +14,7 @@
         validationRules : null,
         table           : null,
         options         : null,
+        lang            : null,
         source_key      : null,
         source_value    : null,
         target_key      : null,
@@ -29,6 +30,8 @@
 
       var optionsString = this.$el.attributes.options.nodeValue;
       this.options = JSON.parse( optionsString.replace(/'/g, '"') );
+
+      this.lang     = this.$el.attributes.lang.nodeValue;
 
       this.medium     = new MediumEditor(this.$el, this.options );
       this.medium.setContent( this.$el.attributes.content.nodeValue );

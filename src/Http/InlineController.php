@@ -2,9 +2,9 @@
 
 namespace swatty007\LaravelInlineEditor\Http;
 
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Routing\Controller as BaseController;
 
 class InlineController extends BaseController
@@ -25,7 +25,7 @@ class InlineController extends BaseController
 
             DB::table($block['table'])
                 ->where($block['source_key'], $block['source_value'])
-                ->update([ $block['target_key'] => $content]);
+                ->update([$block['target_key'] => $content]);
         }
 
         return 'ok';
